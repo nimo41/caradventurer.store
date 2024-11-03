@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarAdventurer.store - قدرت خودروی خود را آزاد کنید</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FF6B4A;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .btn-login {
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .btn-login:hover {
+            background-color: #f5f5f5;
+        }
+
+        .btn-signup {
+            background-color: #FF6B4A;
+            color: white;
+            border: 1px solid #FF6B4A;
+        }
+
+        .btn-signup:hover {
+            background-color: #ff5331;
+        }
+
+        .hero {
+            position: relative;
+            height: 500px;
+            background-image: url('/api/placeholder/1200/500');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem 4rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: right;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .featured {
+            padding: 3rem 4rem;
+            background-color: #f8f8f8;
+        }
+
+        .featured h2 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .product-price {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 1rem;
+            background-color: #FF6B4A;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #ff5331;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 3rem 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 4rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .footer-section p {
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FF6B4A;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 2rem;
+                height: 400px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .featured {
+                padding: 2rem;
+            }
+
+            footer {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">
+            🚗 CarAdventurer.store
+        </a>
+        <div class="nav-links">
+            <a href="#">تیونینگ موتور</a>
+            <a href="#">تیونینگ ظاهری</a>
+            <a href="#">مقالات</a>
+            <a href="#">پشتیبانی</a>
+        </div>
+        <div class="auth-buttons">
+            <a href="#" class="btn btn-login">ورود</a>
+            <a href="#" class="btn btn-signup">ثبت نام</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>قدرت خودروی خود را آزاد کنید</h1>
+            <p>مجموعه محصولات تیونینگ ما را کشف کنید که می‌توانند خودروی شما را متحول کنند.</p>
+        </div>
+    </div>
+
+    <section class="featured">
+        <h2>محصولات ویژه</h2>
+        <div class="products">
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/api/placeholder/400/300')"></div>
+                <div class="product-info">
+                    <div class="product-title">کیت توربوشارژر</div>
+                    <div class="product-price">2,499,000 تومان</div>
+                    <button class="add-to-cart">افزودن به سبد خرید</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('/api/placeholder/400/300')"></div>
+                <div class="product-info">
+                    <div class="product-title">کیت بدنه آیرودینامیک</div>
+                    <div class="product-price">3,299,000 تومان</div>
+                    <button class="add-to-cart">افزودن
